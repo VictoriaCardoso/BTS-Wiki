@@ -10,7 +10,6 @@ class MembersPage extends StatelessWidget {
     'Jimin',
     'V',
     'Jungkook',
-    'Bangtan Sonyeondan',
   ];
 
   @override
