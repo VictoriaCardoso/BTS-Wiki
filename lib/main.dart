@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MembersPage.dart';
+import 'membersPage.dart';
 
 void main() {
   runApp(const BTSApp());
