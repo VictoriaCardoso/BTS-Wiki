@@ -22,7 +22,13 @@ class MembersPage extends StatelessWidget {
               title: Text(
                 Member.members[index].name,
               ), //Exibe o nome completo do membro
-              subtitle: Text(Member.members[index].position),
+              subtitle: Column ( //Exibe a posição e o aniversário do membro
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                Text(Member.members[index].position),
+                Text(Member.members[index].birthday),
+                ]
+              ),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             ),
           );
