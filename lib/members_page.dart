@@ -22,6 +22,7 @@ class MembersPage extends StatelessWidget {
               title: Text(
                 Member.members[index].name,
               ), //Exibe o nome completo do membro
+              subtitle: Text(Member.members[index].position),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             ),
           );
