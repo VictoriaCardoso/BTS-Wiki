@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'models/membersModel.dart';
+
+import 'models/members_model.dart';
 
 class MembersPage extends StatelessWidget {
   const MembersPage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +19,9 @@ class MembersPage extends StatelessWidget {
               leading: CircleAvatar(
                 child: Text(Member.members[index].name[0]),
               ), //Exibe a primeira letra do nome do membro como avatar
-              title: Text(Member.members[index].name), //Exibe o nome completo do membro
+              title: Text(
+                Member.members[index].name,
+              ), //Exibe o nome completo do membro
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
             ),
           );

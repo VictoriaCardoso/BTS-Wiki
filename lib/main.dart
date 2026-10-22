@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'membersPage.dart';
+
+import 'members_page.dart';
 
 void main() {
   runApp(const BTSApp());
@@ -38,7 +39,6 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              
               'Olá, ARMY! 💜',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
