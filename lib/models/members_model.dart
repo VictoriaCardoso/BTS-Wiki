@@ -21,40 +21,35 @@ class Member {
       stageName: 'RM',
       position: 'Lider e rapper',
       birthday: '12/09/1994',
-      description: '''RM é o líder do BTS e é conhecido por suas habilidades de rap e sua inteligência. Ele é fluente em inglês e é responsável por 
-        muitas das letras das músicas do grupo''',
+      description: '''RM é o líder do BTS e é conhecido por suas habilidades de rap e sua inteligência. Ele é fluente em inglês e é responsável por muitas das letras das músicas do grupo''',
     ),
     Member(
       name: 'Kim Seokjin',
       stageName: 'Jin',
       position: 'Vocalista',
       birthday: '04/12/1992',
-      description: '''Jin é o vocalista do BTS e é conhecido por sua voz suave e poderosa. Ele também é conhecido por seu senso de humor e por ser o 
-        WWH (Worldwide Handsome) do grupo''',
+      description: '''Jin é o vocalista do BTS e é conhecido por sua voz suave e poderosa. Ele também é conhecido por seu senso de humor e por ser o WWH (Worldwide Handsome) do grupo''',
     ),
     Member(
       name: 'Min Yoongi',
       stageName: 'Suga',
       position: 'Rapper',
       birthday: '09/03/1993',
-      description: '''Suga é o rapper do BTS e é conhecido por suas habilidades de rap e por suas letras profundas e emocionantes. Ele também é 
-        produtor musical e já lançou músicas solo''',
+      description: '''Suga é o rapper do BTS e é conhecido por suas habilidades de rap e por suas letras profundas e emocionantes. Ele também é produtor musical e já lançou músicas solo''',
     ),
     Member(
       name: 'Jung Hoseok',
       stageName: 'J-Hope',
       position: 'Rapper e dançarino',
       birthday: '18/02/1994',
-      description: '''J-Hope é o rapper e dançarino do BTS e é conhecido por suas habilidades de dança e por sua energia positiva. Ele também é 
-            produtor musical e já lançou músicas solo''',
+      description: '''J-Hope é o rapper e dançarino do BTS e é conhecido por suas habilidades de dança e por sua energia positiva. Ele também é produtor musical e já lançou músicas solo''',
     ),
     Member(
       name: 'Park Jimin',
       stageName: 'Jimin',
       position: 'Vocalista e dançarino',
       birthday: '13/10/1995',
-      description: '''Jimin é o vocalista e dançarino do BTS e é conhecido por sua voz suave e poderosa, além de suas habilidades de dança. Ele 
-            também é conhecido por sua personalidade carismática''',
+      description: '''Jimin é o vocalista e dançarino do BTS e é conhecido por sua voz suave e poderosa, além de suas habilidades de dança. Ele também é conhecido por sua personalidade carismática''',
     ),
     Member(
       name: 'Kim Taehyung',
@@ -68,8 +63,7 @@ class Member {
       stageName: 'Jungkook',
       position: 'Vocalista e dançarino',
       birthday: '01/09/1997',
-      description: '''Jungkook é o vocalista e dançarino do BTS e é conhecido por suas habilidades vocais e de dança. 
-            Ele também é conhecido por sua personalidade humilde e por ser o maknae (o mais jovem) do grupo''',
+      description: '''Jungkook é o vocalista e dançarino do BTS e é conhecido por suas habilidades vocais e de dança. Ele também é conhecido por sua personalidade humilde e por ser o maknae (o mais jovem) do grupo''',
     ),
   ];
 }
