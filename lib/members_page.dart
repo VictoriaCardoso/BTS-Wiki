@@ -1,3 +1,4 @@
+import 'package:bts_wiki/members_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import 'models/members_model.dart';
@@ -22,7 +23,8 @@ class MembersPage extends StatelessWidget {
               title: Text(
                 Member.members[index].name,
               ), //Exibe o nome completo do membro
-              subtitle: Column ( //Exibe a posição e o aniversário do membro
+              subtitle: Column ( //Exibe a posição e o aniversário do membro e caso eu queira adicionar mais de uma informação é necessário colocar o 
+              //Column para que as informações fiquem uma embaixo da outra
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                 Text(Member.members[index].position),
@@ -30,6 +32,14 @@ class MembersPage extends StatelessWidget {
                 ]
               ),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+
+              onTap:(){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MemberDetailsPage(member:Member.members[index])
+                  ));
+              }
             ),
           );
         },
@@ -37,3 +47,4 @@ class MembersPage extends StatelessWidget {
     );
   }
 }
+
