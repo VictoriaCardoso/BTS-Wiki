@@ -10,53 +10,78 @@ class MembersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Membros do BTS')),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: Member.members.length,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.only(bottom: 12),
-            child: ListTile(
-              leading: CircleAvatar(
-                child: 
-                Member.members[index].imagePath != null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        Member.members[index].imagePath!,
-                        width: 180,
-                        height: 180,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  :
-                  Text(Member.members[index].stageName[0])
-              ), //Exibe a primeira letra do nome do membro como avatar
-              title: Text(
-                Member.members[index].name,
-              ), //Exibe o nome completo do membro
-              subtitle: Column ( //Exibe a posição e o aniversário do membro e caso eu queira adicionar mais de uma informação é necessário colocar o 
-              //Column para que as informações fiquem uma embaixo da outra
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text(Member.members[index].position),
-                Text(Member.members[index].birthday),
-                ]
-              ),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-
-              onTap:(){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MemberDetailsPage(member:Member.members[index])
-                  ));
-              }
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          final columns = width < 600
+              ? 2
+              : width < 900
+              ? 3
+              : width < 1200
+              ? 4
+              : 5;
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: Member.members.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: columns,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 0.72,
             ),
+            itemBuilder: (context, index) {
+              final member = Member.members[index];
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkResponse(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MemberDetailsPage(member: member),
+                      ),
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: member.imagePath != null
+                            ? Image.asset(
+                                member.imagePath!,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              )
+                            : const Center(child: Icon(Icons.person, size: 64)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              member.stageName,
+                              style: Theme.of(context).textTheme.titleMedium,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              member.position,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
     );
   }
 }
-
