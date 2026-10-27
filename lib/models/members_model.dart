@@ -1,5 +1,6 @@
 //Esse é o modelo de dados para os membros do grupo. Ele contém informações como nome, nome artístico, posição, aniversário e descrição do membro.
 class Member {
+  final String? imagePath; //Caminho da imagem do membro, que é opcional e pode ser nulo. 
   final String name;
   final String stageName;
   final String position;
@@ -7,6 +8,7 @@ class Member {
   final String description;
 
   const Member({
+    this.imagePath,
     required this.name, //Required quer dizer que o campo é obrigatório, ou seja, não pode ser nulo.
     required this.stageName,
     required this.position,
@@ -22,6 +24,7 @@ class Member {
       position: 'Lider e rapper',
       birthday: '12/09/1994',
       description: '''RM é o líder do BTS e é conhecido por suas habilidades de rap e sua inteligência. Ele é fluente em inglês e é responsável por muitas das letras das músicas do grupo''',
+      imagePath: 'assets/images/members/namjoon.jpeg'
     ),
     Member(
       name: 'Kim Seokjin',
@@ -29,6 +32,7 @@ class Member {
       position: 'Vocalista',
       birthday: '04/12/1992',
       description: '''Jin é o vocalista do BTS e é conhecido por sua voz suave e poderosa. Ele também é conhecido por seu senso de humor e por ser o WWH (Worldwide Handsome) do grupo''',
+      imagePath: 'assets/images/members/jin.jpeg'
     ),
     Member(
       name: 'Min Yoongi',

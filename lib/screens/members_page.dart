@@ -1,7 +1,7 @@
-import 'package:bts_wiki/members_detail_page.dart';
+import 'package:bts_wiki/screens/members_detail_page.dart';
 import 'package:flutter/material.dart';
 
-import 'models/members_model.dart';
+import '../models/members_model.dart';
 
 class MembersPage extends StatelessWidget {
   const MembersPage({super.key});

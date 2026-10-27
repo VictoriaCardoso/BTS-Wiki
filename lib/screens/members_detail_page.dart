@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'models/members_model.dart';
+import '../models/members_model.dart';
 
 class MemberDetailsPage extends StatelessWidget {
   final Member member; //Recebe o membro selecionado da lista de membros
@@ -9,17 +9,36 @@ class MemberDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(member.stageName)),
+      appBar: AppBar(
+        centerTitle: true, //Centraliza o título da AppBar
+        title: Text(member.stageName),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Alinha o conteúdo da coluna à esquerda
+          crossAxisAlignment: CrossAxisAlignment
+              .center, //Alinha o conteúdo da coluna à esquerda
           children: [
-            CircleAvatar(
-              radius: 50, //Define o tamanho do avatar
-              child: Text(member.name[0]),
+            Center(
+              child: member.imagePath != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        member.imagePath!,
+                        width: 180,
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : CircleAvatar(
+                      radius: 50,
+                      child: Text(
+                        member.stageName[0],
+                        style: const TextStyle(fontSize: 32),
+                      ),
+                    ),
             ),
+
             Text(
               //Exibe o nome completo do membro com uma fonte maior e em negrito
               member.name,
@@ -48,7 +67,8 @@ class MemberDetailsPage extends StatelessWidget {
             const SizedBox(height: 8), //Adiciona um espaço entre o título "Sobre" e a descrição do membro
             Text(
               member.description,
-              textAlign: TextAlign.center, //Alinha o texto da descrição do membro
+              textAlign:
+                  TextAlign.center, //Alinha o texto da descrição do membro
             ),
           ],
         ),
