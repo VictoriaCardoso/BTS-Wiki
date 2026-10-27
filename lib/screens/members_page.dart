@@ -18,7 +18,19 @@ class MembersPage extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 12),
             child: ListTile(
               leading: CircleAvatar(
-                child: Text(Member.members[index].stageName[0]),
+                child: 
+                Member.members[index].imagePath != null
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        Member.members[index].imagePath!,
+                        width: 180,
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  :
+                  Text(Member.members[index].stageName[0])
               ), //Exibe a primeira letra do nome do membro como avatar
               title: Text(
                 Member.members[index].name,
