@@ -30,14 +30,14 @@ class _MembersPageState extends State<MembersPage> {
   }
 
   void _restoreCarouselPosition() {
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    if (!mounted || !_pageController.hasClients) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_pageController.hasClients) return;
 
-    if (_pageController.page?.round() != _currentIndex) {
-      _pageController.jumpToPage(_currentIndex);
-    }
-  });
-}
+      if (_pageController.page?.round() != _currentIndex) {
+        _pageController.jumpToPage(_currentIndex);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +51,35 @@ class _MembersPageState extends State<MembersPage> {
           _restoreCarouselPosition();
 
           if (isWideScreen) {
-            // Computador: carrossel e descrição lado a lado.
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1280),
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: _buildCarouselSection(context, cardHeight: 470),
+            final carouselHeight = (constraints.maxHeight - 190)
+                .clamp(280.0, 760.0)
+                .toDouble();
+
+            return SizedBox.expand(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(5, 10, 5, 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Carrossel ocupa a parte esquerda.
+                    Expanded(
+                      flex: 6,
+                      child: _buildCarouselSection(
+                        context,
+                        cardHeight: carouselHeight,
                       ),
-                      const SizedBox(width: 32),
-                      Expanded(
-                        flex: 5,
+                    ),
+
+                    const SizedBox(width: 10),
+
+                    // Informações ocupam a parte direita.
+                    Expanded(
+                      flex: 4,
+                      child: Center(
                         child: _buildAboutSection(context, selectedMember),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             );
@@ -78,7 +87,7 @@ class _MembersPageState extends State<MembersPage> {
 
           // Telas estreitas: conteúdo empilhado.
           return SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(16, 24, 16, 32),
+            padding: const EdgeInsets.fromLTRB(2, 24, 2, 32),
             child: Column(
               children: [
                 _buildCarouselSection(context, cardHeight: 390),
@@ -198,10 +207,10 @@ class _MembersPageState extends State<MembersPage> {
     return Card(
       elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.all(28),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Text(
               'SOBRE',
@@ -219,8 +228,9 @@ class _MembersPageState extends State<MembersPage> {
             const SizedBox(height: 16),
             Text(
               member.description,
-              style: Theme.of(context).textTheme.bodyLarge
-                  ?.copyWith(height: 1.7),
+              style: 
+              Theme.of(context).textTheme.bodyLarge
+                  ?.copyWith(height: 1.7,fontSize: 20),
             ),
             const SizedBox(height: 24),
             FilledButton.tonalIcon(
