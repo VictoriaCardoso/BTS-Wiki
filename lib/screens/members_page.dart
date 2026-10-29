@@ -29,6 +29,16 @@ class _MembersPageState extends State<MembersPage> {
     );
   }
 
+  void _restoreCarouselPosition() {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (!mounted || !_pageController.hasClients) return;
+
+    if (_pageController.page?.round() != _currentIndex) {
+      _pageController.jumpToPage(_currentIndex);
+    }
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     final selectedMember = Member.members[_currentIndex];
@@ -38,6 +48,7 @@ class _MembersPageState extends State<MembersPage> {
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isWideScreen = constraints.maxWidth >= 850;
+          _restoreCarouselPosition();
 
           if (isWideScreen) {
             // Computador: carrossel e descrição lado a lado.
